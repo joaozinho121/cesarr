@@ -70,7 +70,7 @@
                  
                  
                  
-                   var posicaoDaLetraNoAlfabeto = input2.charCodeAt(i)-64;
+                   var posicaoDaLetraNoAlfabeto = input2.charCodeAt(i)-65;
 
                   
                    var letraComDeslocamento = parseInt(posicaoDaLetraNoAlfabeto) - parseInt(inpu);
@@ -78,7 +78,7 @@
                    if(letraComDeslocamento <0){
                     var letraComDeslocamento = 26 + letraComDeslocamento ;
                     }
-                    result += String.fromCharCode(parseInt(letraComDeslocamento)+64);
+                    result += String.fromCharCode(parseInt(letraComDeslocamento)+65);
                 
                 }
                 document.getElementById("output").innerHTML = result;
