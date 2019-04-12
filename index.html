@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caesar Cipher</title>
+        <meta charset="UTF-8">
+        <style>
+            body{background-color: rgb(0, 174, 255)}
+            button {
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                background-color: rgb(255, 0, 0);
+                border-color: rgb(0, 0, 0);
+            }
+            .big {
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+     
+       <p>Quantas posições quer pular?</p>
+       <input type="text" id="respp"/>
+       <p>Qual o seu texto?</p>
+        <input type="text" id="inputt"/>
+        <button onclick="calcular()" class="big">Cifrar</button> 
+        <button onclick="desfazer()" class="big">Descifrar</button>
+        <br> 
+        <br> 
+        <br> 
+        <p>Resultado</p>
+        <span id="output"></span>
+        <script>
+             function calcular() {
+                var inpu = document.getElementById('respp').value;
+                var input2 = document.getElementById('inputt').value.toUpperCase();
+                var result = "";
+
+                if(inpu <1){
+                    inpu=1;
+                }else if(inpu >25){
+                    inpu=25;
+                }
+                for(var i = 0; i<input2.length; i++){ 
+                   var posicaoDaLetraNoAlfabeto = input2.charCodeAt(i)-64;
+                  
+                   var letraComDeslocamento =  parseInt(posicaoDaLetraNoAlfabeto) + parseInt(inpu);;
+                   
+                   if(letraComDeslocamento >26){
+                    var letraComDeslocamento = letraComDeslocamento % 26;
+                   }
+                    result += String.fromCharCode(parseInt(letraComDeslocamento)+64);
+                
+                }
+                document.getElementById("output").innerHTML = result;
+            }
+
+            function desfazer() {
+                var inpu = document.getElementById('respp').value;
+                var input2 = document.getElementById('inputt').value.toUpperCase();
+                var result = "";
+
+                if(inpu <1){
+                    inpu=1;
+                }else if(inpu >25){
+                    inpu=25;
+                }
+                
+                for(var i = 0; i<input2.length; i++){ 
+                 
+                 
+                 
+                   var posicaoDaLetraNoAlfabeto = input2.charCodeAt(i)-64;
+
+                  
+                   var letraComDeslocamento = parseInt(posicaoDaLetraNoAlfabeto) - parseInt(inpu);
+                   
+                   if(letraComDeslocamento <0){
+                    var letraComDeslocamento = 26 + letraComDeslocamento ;
+                    }
+                    result += String.fromCharCode(parseInt(letraComDeslocamento)+64);
+                
+                }
+                document.getElementById("output").innerHTML = result;
+            }
+          </script>
+    </body>
+</html>
